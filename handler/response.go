@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"GoLearn/schemas"
 	"fmt"
 	"net/http"
 
@@ -21,5 +22,14 @@ func sendSuccess(context *gin.Context, operation string, data interface{}) {
 		"message": fmt.Sprintf("operation from handler %s successfull", operation),
 		"data": data,
 	})
+}
 
+type ErrorResponse struct {
+	Message string `json:"message"`
+	ErrorCode int `json:"errorCode"`
+}
+
+type CreateOpeningResponse struct {
+	Message string `json:"message"`
+	Data schemas.OpeningResponse `json:"data"`
 }
